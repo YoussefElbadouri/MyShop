@@ -18,7 +18,7 @@ pip install -r requirements.txt
 echo "💾 Creating MySQL database and tables..."
 sudo mysql <<EOF
 CREATE DATABASE IF NOT EXISTS MyShop;
-CREATE USER IF NOT EXISTS 'ysf'@'localhost' IDENTIFIED BY 'Y$Fpass2025!';
+CREATE USER IF NOT EXISTS 'ysf'@'localhost' IDENTIFIED BY 'YsFp@s5!';
 GRANT ALL PRIVILEGES ON MyShop.* TO 'ysf'@'localhost';
 FLUSH PRIVILEGES;
 USE MyShop;
