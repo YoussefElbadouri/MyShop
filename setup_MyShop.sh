@@ -4,7 +4,7 @@ echo "📦 Updating system and installing dependencies..."
 sudo apt update -y
 sudo apt install -y python3 python3-pip python3-venv mysql-server libxml2-dev libxslt1-dev
 
-echo "🔐 Starting and securing MySQL..."
+echo "🔐 Starting MySQL service..."
 sudo systemctl start mysql
 
 echo "🧪 Creating virtual environment..."
@@ -36,33 +36,13 @@ CREATE TABLE IF NOT EXISTS otp_flows (
 );
 EOF
 
-echo "🛠️ Creating default config.py..."
-cat <<EOL > config.py
-DB_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "",  
-    "database": "MyShop"
-}
-
-EMAIL_ADDRESS = "your-email@gmail.com"        # <-- Replace with your email
-EMAIL_PASSWORD = "your-app-password-here"     # <-- Replace with app password
-EOL
-
-echo "📦 Creating default products.xml..."
-cat <<EOL > products.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<catalog>
-</catalog>
-EOL
-
-echo "🛠️ Creating systemd service..."
+echo "🛠️ Creating systemd service myshop.service..."
 APP_DIR=$(pwd)
 USER_NAME=$(whoami)
 
-sudo bash -c "cat > /etc/systemd/system/otp_race.service" <<EOF
+sudo bash -c "cat > /etc/systemd/system/myshop.service" <<EOF
 [Unit]
-Description=Flask OTP Race App
+Description=Flask MyShop Application
 After=network.target mysql.service
 
 [Service]
@@ -76,10 +56,10 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 
-echo "🔄 Reloading systemd daemon and starting service..."
+echo "🔄 Reloading and starting systemd service..."
 sudo systemctl daemon-reexec
 sudo systemctl daemon-reload
-sudo systemctl enable otp_race.service
-sudo systemctl start otp_race.service
+sudo systemctl enable myshop.service
+sudo systemctl start myshop.service
 
-echo "✅ Flask app is running as a service (http://<your-ec2-ip>:5000)"
+echo "✅ MyShop is running at: http://<your-ec2-ip>:5000"
