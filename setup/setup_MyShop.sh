@@ -16,9 +16,11 @@ pip install --upgrade pip
 pip install -r requirements.txt
 
 echo "💾 Creating MySQL database and tables..."
-mysql -u root <<EOF
+sudo mysql <<EOF
 CREATE DATABASE IF NOT EXISTS MyShop;
-
+CREATE USER IF NOT EXISTS 'ysf'@'localhost' IDENTIFIED BY 'Y$Fpass2025!';
+GRANT ALL PRIVILEGES ON MyShop.* TO 'ysf'@'localhost';
+FLUSH PRIVILEGES;
 USE MyShop;
 
 CREATE TABLE IF NOT EXISTS users (
@@ -49,6 +51,8 @@ After=network.target mysql.service
 User=${USER_NAME}
 WorkingDirectory=${APP_DIR}
 Environment=\"PATH=${APP_DIR}/venv/bin\"
+Environment=FLASK_APP=app.py
+
 ExecStart=${APP_DIR}/venv/bin/flask run --host=0.0.0.0 --port=5000
 Restart=always
 
