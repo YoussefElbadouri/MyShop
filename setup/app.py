@@ -6,11 +6,10 @@ import time
 from uuid import uuid4
 import smtplib
 from email.message import EmailMessage
-from setup.config import DB_CONFIG, EMAIL_ADDRESS, EMAIL_PASSWORD
+from config import DB_CONFIG, EMAIL_ADDRESS, EMAIL_PASSWORD
 from datetime import timezone
 import socket
 import xml.etree.ElementTree as ET
-from setup.config import DB_CONFIG
 from lxml import etree
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
