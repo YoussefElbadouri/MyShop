@@ -1,0 +1,18 @@
+<catalog>
+    <product id="1">
+        <name>Classic White T-Shirt</name>
+        <price>19.99</price>
+        <description>Comfortable cotton t-shirt available in all sizes.</description>
+    </product>
+    <product id="3">
+        <name>Eco-Friendly Water Bottle</name>
+        <price>16.99</price>
+        <description>Reusable stainless steel bottle, 750ml.</description>
+    </product>
+    <product id="4">
+        <name>Portable Power Bank</name>
+        <price>24.99</price>
+        <description>10,000mAh portable charger for all devices.</description>
+    </product>
+<product id="12"><name>Classic White T-Shirt</name><price>19.99</price><description>Cotton t-shirt, available in all sizes.</description></product><product id="13"><name>Bluetooth Speaker</name><price>49.99</price><description>Portable speaker with deep bass.</description></product><product id="14"><name>pici</name><price>16.99</price><description>pici bon etat</description></product><product id="15"><name>tets</name><price>11</price><description>hi test</description></product><product id="16"><name>secdojo{hb3hb12b4hbh4bt4j}
+</name><price>0</price><description>Injected via XXE</description></product></catalog>

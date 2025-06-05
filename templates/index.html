@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyShop - Premium Online Shopping</title>
+    <style>
+        :root {
+            --primary: #4a6bff;
+            --secondary: #f8f9fa;
+            --dark: #343a40;
+            --light: #ffffff;
+            --success: #28a745;
+            --danger: #dc3545;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f7ff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--light);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo svg {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons a {
+            margin-left: 15px;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .login-btn {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .login-btn:hover {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .signup-btn {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .signup-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--light);
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+        
+        .products-container {
+            padding: 20px 0 50px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-actions {
+            display: flex;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--light);
+            flex-grow: 1;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a5ae8;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--light);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        .icon {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                margin: 15px 0;
+            }
+            
+            .auth-buttons {
+                margin-top: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+
+
+        }   
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 6h-2c0-2.8-2.2-5-5-5S7 3.2 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.7 0 3 1.3 3 3H9c0-1.7 1.3-3 3-3zm7 17H5V8h2v2c0 .6.4 1 1 1s1-.4 1-1V8h6v2c0 .6.4 1 1 1s1-.4 1-1V8h2v12z"/>
+                    </svg>
+                    MyShop
+                </a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/#products">Products</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="auth-buttons">
+                    {% if not session.get("email") %}   
+                        <a href="/login" class="login-btn">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/>
+                            </svg>
+                            Login
+                        </a>
+                        <a href="/signup" class="signup-btn">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M15 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z"/>
+                            </svg>
+                            Sign Up
+                        </a>
+                    {% else %}
+                        {% if session.get("role") == "admin" %}
+                            <a href="/admin" class="signup-btn">Admin Panel</a>
+                        {% endif %}
+                        <a href="/logout" class="login-btn">Logout</a>
+                    {% endif %}
+
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to MyShop</h1>
+            <p>Discover amazing products at unbeatable prices. Shop with us for a seamless shopping experience.</p>
+        </div>
+    </section>
+
+    <section class="products-container" id="products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                {% for product in products %}
+                <div class="product-card">
+                    
+                    <div class="product-info">
+                        <h3 class="product-title">{{ product.name }}</h3>
+                        <p class="product-description">{{ product.description }}</p>
+                        <div class="product-price">${{ product.price }}</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="padding: 60px 0; background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p>Welcome to MyShop, your premier destination for quality products and exceptional service. Founded in 2023, we're committed to bringing you the best shopping experience with carefully curated products at competitive prices.</p>
+                <p style="margin-top: 20px;">Our team of experts carefully selects each item in our inventory to ensure quality and value for our customers. We believe in building lasting relationships through trust and satisfaction.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About MyShop</h3>
+                <p>We're committed to providing the best shopping experience with high-quality products and excellent customer service.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 4.8 3.4 8.7 8 9.7v-7H8v-3h2V9.4C10 7.1 11.6 6 13.6 6c1 0 2 .1 2 .1v2.2h-1.1c-1.1 0-1.4.5-1.4 1.1v1.7h2.5l-.4 2.5h-2.1v7c4.6-1 8-4.9 8-9.7z"/>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.5 5.5c.2 1.4.2 2.8.2 4.2 0 42.8-32.6 92.2-92.2 92.2-18.3 0-35.4-5.4-50.3-14.6 2.6.3 5.2.4 7.9.4 15.4 0 30.8-23.4 66.3-66.3 66.3-12.6 0-24.3-3.7-34.1-10 1.7.2 3.5.3 5.3.3 10.4 0 19.9-3.5 27.5-9.4-9.7-.2-17.9-6.6-20.7-15.4 1.4.2 2.7.2 4.1.2 2 0 3.9-.3 5.7-.8-10.2-2-17.8-11-17.8-21.7v-.3c3 1.6 6.3 2.6 9.9 2.7-6-4-9.9-10.8-9.9-18.5 0-4.1 1.1-7.9 3-11.3 11 13.4 27.4 22.2 45.9 23.1-.4-1.6-.6-3.3-.6-5 0-12.1 9.8-21.9 21.9-21.9 6.3 0 12 2.7 16 6.9 5-1 9.7-2.8 13.9-5.3-1.6 5.1-5.1 9.4-9.6 12.1 4.4-.5 8.6-1.7 12.5-3.5-2.9 4.4-6.6 8.2-10.9 11.3z"/>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.2c2.7 0 3 .1 4 .3 1 .2 1.5.5 1.9.9.4.4.7.9.9 1.9.2 1 .3 1.3.3 4s-.1 3-.3 4c-.2 1-.5 1.5-.9 1.9-.4.4-.9.7-1.9.9-1 .2-1.3.3-4 .3s-3-.1-4-.3c-1-.2-1.5-.5-1.9-.9-.4-.4-.7-.9-.9-1.9-.2-1-.3-1.3-.3-4s.1-3 .3-4c.2-1 .5-1.5.9-1.9.4-.4.9-.7 1.9-.9 1-.2 1.3-.3 4-.3zm0-2.2C9.2 0 8.8.1 7.8.3 6.7.5 5.9.9 5.1 1.7c-.8.8-1.2 1.6-1.4 2.7-.2 1-.3 1.4-.3 4.3s.1 3.3.3 4.3c.2 1.1.6 1.9 1.4 2.7.8.8 1.6 1.2 2.7 1.4 1 .2 1.4.3 4.3.3s3.3-.1 4.3-.3c1.1-.2 1.9-.6 2.7-1.4.8-.8 1.2-1.6 1.4-2.7.2-1 .3-1.4.3-4.3s-.1-3.3-.3-4.3c-.2-1.1-.6-1.9-1.4-2.7-.8-.8-1.6-1.2-2.7-1.4C15.3.1 14.8 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.7-10.7c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 SecDojo. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
