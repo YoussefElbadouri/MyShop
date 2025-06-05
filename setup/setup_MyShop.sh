@@ -66,4 +66,4 @@ sudo systemctl daemon-reload
 sudo systemctl enable myshop.service
 sudo systemctl start myshop.service
 
-echo "✅ MyShop is running at: http://<your-ec2-ip>:5000"
+echo "✅ MyShop is running at: http://<your-ip>:5000"
