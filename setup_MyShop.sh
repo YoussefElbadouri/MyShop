@@ -16,7 +16,6 @@ pip install --upgrade pip
 pip install -r requirements.txt
 
 echo "💾 Creating MySQL database and tables..."
-# Modify this block if you want to use a specific password or user later
 mysql -u root <<EOF
 CREATE DATABASE IF NOT EXISTS MyShop;
 
@@ -57,6 +56,30 @@ cat <<EOL > products.xml
 </catalog>
 EOL
 
-echo "🚀 Running Flask app (ctrl+c to stop)"
-export FLASK_APP=app.py
-flask run --host=0.0.0.0 --port=5000
+echo "🛠️ Creating systemd service..."
+APP_DIR=$(pwd)
+USER_NAME=$(whoami)
+
+sudo bash -c "cat > /etc/systemd/system/otp_race.service" <<EOF
+[Unit]
+Description=Flask OTP Race App
+After=network.target mysql.service
+
+[Service]
+User=${USER_NAME}
+WorkingDirectory=${APP_DIR}
+Environment=\"PATH=${APP_DIR}/venv/bin\"
+ExecStart=${APP_DIR}/venv/bin/flask run --host=0.0.0.0 --port=5000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+echo "🔄 Reloading systemd daemon and starting service..."
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable otp_race.service
+sudo systemctl start otp_race.service
+
+echo "✅ Flask app is running as a service (http://<your-ec2-ip>:5000)"
