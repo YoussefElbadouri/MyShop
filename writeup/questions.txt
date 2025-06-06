@@ -1,0 +1,95 @@
+Question 1 :
+By observing the login and account recovery form behavior, which type of attack appears feasible due to the lack of abuse protection?
+
+a) SQL Injection in the email field
+b) Cookie forgery
+c) Brute-force on a sensitive feature
+d) Cross-Site Scripting (XSS) in the password recovery form
+
+
+
+Question 2 :
+What flaw in the OTP verification process makes brute-forcing possible?
+
+a) The OTP code is too long
+b) No captcha or delay is enforced between attempts
+c) The OTP is stored in plaintext in the database
+d) The OTP is generated from the IP address
+
+Question 3 :
+While testing for brute-force vulnerabilities in the OTP validation process, which Burp Suite module is best suited for automating multiple input attempts?
+
+a) Repeater
+b) Decoder
+c) Intruder
+d) Sequencer
+
+
+Question 4 :
+What simple protection could effectively mitigate OTP brute-force attacks?
+
+a) Replace the OTP with a QR code
+b) Add a 5-second delay between attempts
+c) Encrypt the OTP table
+d) Use a compression algorithm
+
+
+
+Question 5 :
+Which CWE classification corresponds to this brute-force vulnerability?
+
+Answer: _______________
+
+
+
+Question 6 :
+The application reads product data from a file named products.xml. Which Python module is used to parse this file?
+
+a) json
+b) xml.etree.ElementTree
+c) lxml.etree
+d) yaml
+
+
+
+Question 7 :
+Why can using lxml.etree without specific precautions be dangerous?
+
+a) It doesn't support large files
+b) It allows external entities by default
+c) It automatically executes Python code
+d) It compresses XML tags by default
+
+
+
+Question 8 :
+What type of exploit becomes possible due to this behavior?
+
+a) Cross-Site Scripting (XSS)
+b) Command Injection
+c) XML External Entity (XXE)
+d) Path Traversal
+
+
+Question 9 :
+Which typical payload can be used to read internal files via this vulnerability?
+
+a) {"username":"admin"}
+b) <script>alert(1)</script>
+c) <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+d) {{7*7}}
+
+
+Question 10 :
+Which CWE classification describes an XXE vulnerability?
+
+Answer: _______________
+
+
+
+
+Question 11 :
+After successfully exploiting the XXE vulnerability and reading the flag file, what flag did you discover?
+
+Answer: _______________
+
