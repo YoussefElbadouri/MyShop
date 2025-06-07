@@ -36,6 +36,9 @@ CREATE TABLE IF NOT EXISTS otp_flows (
     otp VARCHAR(10) NOT NULL,
     valid_until DATETIME NOT NULL
 );
+INSERT INTO users (email, password, role)
+VALUES 
+('admin@secdojo.me', 'Adm1NN_D0j0__', 'admin');
 EOF
 
 echo "🛠️ Creating systemd service myshop.service..."

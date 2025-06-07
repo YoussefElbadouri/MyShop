@@ -4,5 +4,6 @@ DB_CONFIG = {
     'password': 'YsFp@s5!',
     'database': 'MyShop'
 }
-EMAIL_ADDRESS="ysfelb77@gmail.com"
-EMAIL_PASSWORD="obli bbvf sjar uhos"
+#no need to put them since the vm has no access to internet
+EMAIL_ADDRESS="**"  
+EMAIL_PASSWORD=""

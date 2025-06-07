@@ -7,7 +7,6 @@ c) Brute-force on a sensitive feature
 d) Cross-Site Scripting (XSS) in the password recovery form
 
 
-
 Question 2 :
 What flaw in the OTP verification process makes brute-forcing possible?
 
@@ -17,6 +16,12 @@ c) The OTP is stored in plaintext in the database
 d) The OTP is generated from the IP address
 
 Question 3 :
+What is the admin's email address discovered during the test
+
+Answer: _______________
+
+
+Question 4 :
 While testing for brute-force vulnerabilities in the OTP validation process, which Burp Suite module is best suited for automating multiple input attempts?
 
 a) Repeater
@@ -25,7 +30,7 @@ c) Intruder
 d) Sequencer
 
 
-Question 4 :
+Question 5 :
 What simple protection could effectively mitigate OTP brute-force attacks?
 
 a) Replace the OTP with a QR code
@@ -35,14 +40,14 @@ d) Use a compression algorithm
 
 
 
-Question 5 :
+Question 6 :
 Which CWE classification corresponds to this brute-force vulnerability?
 
 Answer: _______________
 
 
 
-Question 6 :
+Question 7 :
 The application reads product data from a file named products.xml. Which Python module is used to parse this file?
 
 a) json
@@ -52,7 +57,7 @@ d) yaml
 
 
 
-Question 7 :
+Question 8 :
 Why can using lxml.etree without specific precautions be dangerous?
 
 a) It doesn't support large files
@@ -62,7 +67,7 @@ d) It compresses XML tags by default
 
 
 
-Question 8 :
+Question 9 :
 What type of exploit becomes possible due to this behavior?
 
 a) Cross-Site Scripting (XSS)
@@ -71,7 +76,7 @@ c) XML External Entity (XXE)
 d) Path Traversal
 
 
-Question 9 :
+Question 10 :
 Which typical payload can be used to read internal files via this vulnerability?
 
 a) {"username":"admin"}
@@ -80,7 +85,7 @@ c) <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
 d) {{7*7}}
 
 
-Question 10 :
+Question 11 :
 Which CWE classification describes an XXE vulnerability?
 
 Answer: _______________
@@ -88,7 +93,7 @@ Answer: _______________
 
 
 
-Question 11 :
+Question 12 :
 After successfully exploiting the XXE vulnerability and reading the flag file, what flag did you discover?
 
 Answer: _______________
